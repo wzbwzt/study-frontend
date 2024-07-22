@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .rectangle {
+        width: 100px; /* 矩形的宽度 */
+        height: 50px; /* 矩形的高度 */
+        background-color: blue; /* 矩形的颜色 */
+        position: relative; /* 定位方式，让三角形能够相对于矩形定位 */
+        border: 5px solid yellow; /* 为矩形设置黄色边框，宽度为5px */
+      }
+
+      .triangle-up {
+        width: 0;
+        height: 0;
+        border-left: 50px solid transparent; /* 左侧边框透明 */
+        border-right: 50px solid transparent; /* 右侧边框透明 */
+        border-bottom: 100px solid red; /* 底部边框红色，形成三角形 */
+        position: absolute; /* 绝对定位 */
+        top: -100px; /* 定位，让三角形位于矩形之上 */
+        left: 0; /* 左对齐 */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="rectangle">
+      <div class="triangle-up"></div>
+    </div>
+  </body>
+</html>
