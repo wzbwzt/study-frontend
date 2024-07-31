@@ -1,0 +1,37 @@
+@use "sass:math";
+
+body {
+  background: #000;
+  perspective: 2000px;
+}
+.ring {
+  width: 100vw;
+  height: 100vh;
+  transform-style: preserve-3d;
+  transform: rotateY(0deg);
+  img {
+    cursor: pointer;
+    $imgWidth: 300px;
+    $imgHeight: 400px;
+    width: $imgWidth;
+    height: $imgHeight;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -(calc($imgWidth / 2));
+    margin-top: -(calc($imgHeight / 2));
+
+    $r: 500px;
+    $n: 10;
+    $pdeg: calc(360deg / $n);
+    backface-visibility: hidden; //隐藏背面
+    @for $i from 0 through calc($n - 1) {
+      &:nth-child(#{$i + 1}) {
+        $deg: calc($i * $pdeg);
+        $x: calc(math.sin($deg) * $r);
+        $z: calc(math.cos($deg) * $r);
+        transform: translate3d(#{$x}, 0, #{$z}) rotateY(calc(180deg + $deg));
+      }
+    }
+  }
+}

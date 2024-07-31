@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <div class="ring">
+      <img class="photo" src="https://cdn.pixabay.com/photo/2023/01/08/09/33/jellyfish-7704800_1280.jpg" alt="" />
+      <img class="photo" src="https://cdn.pixabay.com/photo/2024/02/01/12/19/grasses-8545863_640.jpg" alt="" />
+      <img class="photo" src="https://cdn.pixabay.com/photo/2023/10/15/15/12/stone-wall-8317167_640.jpg" alt="" />
+      <img class="photo" src="https://cdn.pixabay.com/photo/2023/08/06/18/17/trees-8173532_640.jpg" alt="" />
+      <img class="photo" src="https://cdn.pixabay.com/photo/2023/06/19/18/41/blue-jay-8075346_640.jpg" alt="" />
+      <img class="photo" src="https://cdn.pixabay.com/photo/2023/06/05/13/56/cat-8042342_640.jpg" alt="" />
+      <img class="photo" src="https://cdn.pixabay.com/photo/2017/07/03/20/17/colorful-2468874_640.jpg" alt="" />
+      <img class="photo" src="https://cdn.pixabay.com/photo/2024/01/27/18/24/squirrel-8536537_640.jpg" alt="" />
+      <img class="photo" src="https://cdn.pixabay.com/photo/2022/08/12/12/25/vulture-7381642_640.jpg" alt="" />
+      <img class="photo" src="https://cdn.pixabay.com/photo/2023/05/15/18/14/bird-7995668_640.jpg" alt="" />
+    </div>
+  </body>
+  <script type="module">
+    const ring = document.querySelector(".ring");
+    const body = document.querySelector("body");
+
+    let isDown = false;
+    let startX;
+    let rotateAngle = 0;
+    body.addEventListener("mousedown", (e) => {
+      console.log("mouseDown");
+      isDown = true;
+      startX = e.pageX - body.offsetLeft;
+    });
+
+    body.addEventListener("mouseleave", () => {
+      console.log("mouseLeave");
+      isDown = false;
+    });
+
+    body.addEventListener("mouseup", () => {
+      console.log("mouseUp");
+      isDown = false;
+    });
+
+    body.addEventListener("mousemove", (e) => {
+      if (!isDown) return;
+      console.log("mouseMove");
+      e.preventDefault();
+      const x = e.pageX - body.offsetLeft;
+      const walk = (x - startX) * 1; // 调整旋转速度
+      rotateAngle += walk;
+      console.log("walk", walk);
+      ring.style.transform = `rotateY(${rotateAngle}deg)`;
+    });
+  </script>
+</html>

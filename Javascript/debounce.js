@@ -1,6 +1,8 @@
 //去抖动
 
 const exec = (i) => {
+  i++;
+  debugger;
   console.log(i);
 };
 
